@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+        <link rel="stylesheet" href="assets/jquery.mobile-1.4.1.min.css">
+        <script src="assets/jquery.js"></script>
+        <script src="assets/flurry.js"></script>
+<!--        <script src="http://debug.phonegap.com/target/target-script-min.js#sabirmipt"></script>-->
+
+        <script>
+            //            $(document).bind("mobileinit", function () {
+            //                $.mobile.ajaxEnabled = false;
+            //            });
+            FlurryAgent.startSession("DS69Q7J9TH5X5TC9SDZR");
+        </script>
+
+
+        <script src="assets/jquery.mobile-1.4.1.min.js"></script>
+
+        <script src="js/parse.js"></script>
+        <script src="js/IdiomsDBTools.js"></script>
+        <script src="js/jquery.cookie.js"></script>
+
+        <style>
+            li a img{
+                padding-top: 10px;
+                padding-left: 10px;
+            }
+
+            [data-role=footer]{
+                bottom: 0px; 
+                position:absolute;  
+                width:100%
+            }
+
+            a.visitedIdiom {
+                background: lightyellow !important;
+                /*                border-color: #ddd;
+                                color: #333;
+                                text-shadow: 0 1px 0 #f3f3f3;*/
+            }
+
+        </style>
+
+
+    </head>
+    <body>
+
+        <div data-role="page" id="listPage">
+            <div data-role="header" data-position="fixed">
+                <h1 style="margin: 0 5%;" >Idioms & Phrases</h1>
+            </div>
+
+            <div data-role="content" style="margin-bottom: 50px;">
+                <ul data-role="listview" id="idiomsList" >
+
+
+                    <!--                    <li>
+                                            <a href="#idiomPage?vimeoId=86387133" class="visitedIdiom" >
+                                                <img src="http://b.vimeocdn.com/ts/464/039/464039085_100.jpg" class="ui-li-thumb" />
+                                                <h3>ace in the hole</h3>
+                                                <p>An “ace in the hole”  (American) is an advantage that you have that other people do not know about. ... </p>
+                                                <span class="ui-li-count">1</span>
+                                            </a></li>
+                                        <li>
+                                            <a href="#idiomPage?vimeoId=86387137" class="visitedIdiom" >
+                                                <img src="http://b.vimeocdn.com/ts/464/039/464039097_100.jpg" class="ui-li-thumb" />
+                                                <h3>acid test</h3>
+                                                <p>An “acid test” - a test which will really prove the value, quality, or truth of something ... </p>
+                                                <span class="ui-li-count">1</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#idiomPage?vimeoId=86387155" class="visitedIdiom" >
+                                                <img src="http://b.vimeocdn.com/ts/464/039/464039092_100.jpg" class="ui-li-thumb" />
+                                                <h3>Act of God</h3>
+                                                <p>An Act of God is a legal term for events outside human control, such as sudden floods or other natural disasters, for which no one can be held responsible. ... </p>
+                                                <span class="ui-li-count">2</span>
+                                            </a>
+                                        </li>-->
+
+
+                </ul>
+            </div>
+
+            <div data-role="footer" data-position="fixed" style="bottom: 0px; position: fixed; width: 100%;" >
+                <div data-role="navbar">
+                    <ul>
+                        <!--                        <li><a href="index.html" data-icon="home" >Home</a></li>-->
+                        <li><a href="#" data-icon="grid"  class="ui-btn-active ui-state-persist"  >Idioms</a></li>
+                        <li><a href="settings.html" data-icon="gear" >Settings</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
+
+        <div data-role="page" id="idiomPage">
+            <div data-role="header"  data-position="fixed" >
+                <a href="#listPage" data-transition="slide"  data-icon="arrow-l" data-iconpos="notext"  class="backbtn" >Back</a>
+                <h1 class="idiomName" id="idiomName" data-currentVimeoId="" ></h1>
+            </div>
+
+            <div data-role="content" style="margin-bottom: 5px;">
+
+                <div class="ui-corner-all custom-corners" >
+                    <div class="ui-bar ui-bar-a">
+                        <h3 id="idiomHeader" >Idiom</h3>
+                    </div>
+                    <div class="ui-body ui-body-a">
+                        <p class="idiomName"  > </p>
+                    </div>
+                </div>
+
+                <div class="ui-corner-all custom-corners" >
+                    <div class="ui-bar ui-bar-a">
+                        <h3 
+                            id="meaningHeader">Meaning</h3>
+                    </div>
+                    <div class="ui-body ui-body-a">
+                        <p id="description"> </p>
+                    </div>
+                </div>
+
+                <div class="ui-corner-all custom-corners" id="examplesPanel" >
+                    <div class="ui-bar ui-bar-a">
+                        <h3>Examples</h3>
+                    </div>
+                    <div id="examplesBlock">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div data-role="footer" style="bottom: 0px; position: fixed; width: 100%; " >
+                <div data-role="navbar" >
+                    <ul>
+                        <li>
+                            <a href="javascript: void(0);" id="prevButton"  data-icon="arrow-l" data-iconpos="notext" ></a>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);"  id="nextButton"  data-icon="arrow-r" data-iconpos="notext" ></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <script type="text/javascript">
+            
+            $(function(){
+                
+                iBase = new IdiomsDBTools();
+                //                iBase.initIdiomsList();
+                //                iBase.generateListHtml();
+                    
+                $(document).on('pageinit', '#listPage', function(){
+                    iBase.initIdiomsList();
+                    iBase.generateListHtml();
+                });
+
+                //                $(document).on('pageshow', '#listPage', function(){
+                //                    iBase.initIdiomsList();
+                //                    iBase.generateListHtml();
+                //                });
+                
+                //                $(document).on('pageinit', '#idiomPage', function(){
+                //                    iBase = new IdiomsDBTools();
+                //                    iBase.prepareIdiomHtml();
+                //                });
+                
+                $(document).on('pageshow', '#idiomPage', function(){
+                    //                    iBase = new IdiomsDBTools();
+                    iBase.prepareIdiomHtml();
+                });
+            });
+            
+
+        </script>
+
+
+    </body>
+</html>

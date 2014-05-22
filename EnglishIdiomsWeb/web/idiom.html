@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+        <link rel="stylesheet" href="assets/jquery.mobile-1.4.1.min.css">
+        <script src="assets/jquery.js"></script>
+        <script src="assets/flurry.js"></script>
+        <!--        <script src="http://debug.phonegap.com/target/target-script-min.js#sabir"></script>-->
+
+        <script>
+            //            $(document).bind("mobileinit", function () {
+            //                $.mobile.ajaxEnabled = false;
+            //            });
+            FlurryAgent.startSession("DS69Q7J9TH5X5TC9SDZR");
+        </script>
+
+        <script src="assets/jquery.mobile-1.4.1.min.js"></script>
+
+        <script src="js/parse.js"></script>
+        <script src="js/IdiomsDBTools.js"></script>
+
+        <style>
+            .ui-corner-all.custom-corners{
+                margin-bottom: 10px;
+            }
+
+            #examplesPanel .ui-body.ui-body-a{
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+
+            #examplesPanel .ui-body.ui-body-a iframe{
+                margin: 0 auto;
+            }
+
+            #examplesPanel .ui-body.ui-body-a .transcript{
+                padding-left: 1em;
+                padding-right: 1em;
+            }
+
+            .transcript{
+                font-size: 0.9em;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <div data-role="page" id="idiomPage">
+            <div data-role="header" >
+                <a href="list.html"  data-icon="arrow-l" data-iconpos="notext" class="backbtn" >Back</a>
+                <h1 class="idiomName" ></h1>
+            </div>
+
+            <div data-role="content" style="margin-bottom: 5px;">
+                <div class="ui-corner-all custom-corners" >
+                    <div class="ui-bar ui-bar-a">
+                        <h3>Idiom</h3>
+                    </div>
+                    <div class="ui-body ui-body-a">
+                        <p class="idiomName"  > </p>
+                    </div>
+                </div>
+
+                <div class="ui-corner-all custom-corners" >
+                    <div class="ui-bar ui-bar-a">
+                        <h3>Meaning</h3>
+                    </div>
+                    <div class="ui-body ui-body-a">
+                        <p id="description"> </p>
+                    </div>
+                </div>
+
+                <div class="ui-corner-all custom-corners" id="examplesPanel" >
+                    <div class="ui-bar ui-bar-a">
+                        <h3>Examples</h3>
+                    </div>
+                    <!--                    <div class="ui-body ui-body-a">
+                                            <iframe src="//player.vimeo.com/video/86836827"  frameborder="0" style="width: 100%;" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe>
+                                            <p class="transcript">
+                                                transcti An Act of God is a legal term for events outside human control, such as sudden floods or other natural disasters, for which no one can be held responsible.
+                                            </p>
+                                        </div>
+                                        <div class="ui-body ui-body-a">
+                                            <iframe src="//player.vimeo.com/video/86836827"  frameborder="0" style="width: 100%;" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe>
+                                            <p class="transcript">
+                                                transcti An Act of God is a legal term for events outside human control, such as sudden floods or other natural disasters, for which no one can be held responsible.
+                                            </p>
+                                        </div>-->
+                </div>
+
+
+
+            </div>
+
+
+            <div data-role="footer" style="bottom: 0px; position: fixed; width: 100%; " >
+
+                <div data-role="navbar">
+                    <ul>
+                        <!--                        <li><a href="index.html" data-icon="home" >Home</a></li>-->
+                        <!--                        <li><a href="list.html" data-icon="grid">Idioms</a></li>-->
+                        <!--                        <li><a href="settings.html" data-icon="gear" >Settings</a></li>-->
+                        <!--<li>
+                            
+                        </li>-->
+
+                        <!--                    </ul>-->
+
+                        <!--                    <div data-role="controlgroup" data-type="horizontal" align="center" >-->
+                        <!--                    </div>-->
+                        <li>
+                            <!--                            <a href="javascript: void(0);" id="prevButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-left" >Prev</a>-->
+                            <a href="javascript: void(0);" id="prevButton"  data-icon="arrow-l" data-iconpos="notext" ></a>
+                        </li>
+                        <li>
+                            <!--                            <a href="javascript: void(0);" id="nextButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-r ui-btn-icon-right" >Next</a>-->
+                            <a href="javascript: void(0);"  id="nextButton"  data-icon="arrow-r" data-iconpos="notext" ></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--                <div data-role="controlgroup" data-type="horizontal" align="center" >
+                                    <a href="javascript: void(0);" id="prevButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-left" >Prev</a>
+                                    <a href="javascript: void(0);" id="nextButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-r ui-btn-icon-right" >Next</a>
+                                </div>-->
+
+            </div>
+
+
+
+        </div> 
+
+        <script>
+            
+            $(document).on('pagecreate', '#idiomPage', function(){
+                console.log('pagecreate occured');
+                iBase = new IdiomsDBTools();
+                iBase.prepareIdiomHtml();
+            });
+            
+//            $(function(){
+//                iBase = new IdiomsDBTools();
+//                iBase.prepareIdiomHtml();
+//            });
+            
+        </script>
+
+    </body>
+</html>

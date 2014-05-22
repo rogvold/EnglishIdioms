@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+
+
+        <script type="text/javascript">
+                    
+            function testWebservice(){
+                        
+                $.ajax({
+                    url:'http://5.9.107.99:5002/api/v1/testPost',
+                    type:'POST',
+                    dataType: 'jsonp',
+                    contentType: 'json',
+                    success: function(data){
+                        console.log(data);
+                        alert(data);
+                    },
+                    data: {
+                        img: 'as'
+                    }
+                });
+                //                $.post('http://5.9.107.99:5002/api/v1/testPost', function(data){
+                //                    console.log(data);
+                //                });
+                        
+            }
+                    
+                    
+            $(function(){
+                testWebservice();
+            });
+        </script>
+
+    </head>
+    <body>
+
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+        <link rel="stylesheet" href="assets/jquery.mobile-1.4.1.min.css">
+        <script src="assets/flurry.js"></script>
+        <script src="assets/jquery.js"></script>
+<!--        <script src="http://debug.phonegap.com/target/target-script-min.js#sabirmipt"></script>-->
+
+        <script>
+//            $(document).bind("mobileinit", function () {
+//                $.mobile.ajaxEnabled = false;
+//            });
+            FlurryAgent.startSession("DS69Q7J9TH5X5TC9SDZR");
+        </script>
+
+        <script src="assets/jquery.mobile-1.4.1.min.js"></script>
+        <script src="js/parse.js"></script>
+        <script src="js/IdiomsDBTools.js"></script>
+
+
+    </head>
+    <body>
+        <div data-role="page" id="helloPage">
+            <div data-role="header">
+                <h1>Loading...</h1>
+            </div>
+
+            <div data-role="content">
+                <!--                <p>Preparing database...</p>-->
+                <center>
+                    <p>
+                        The Internet must be available.
+                    </p>
+                    <div  id="progressDiv">
+                        
+                    </div>
+                </center>
+            </div>
+
+            <!--            <div data-role="footer" style="bottom: 0px; position:absolute; position:absolute; width:100% " >
+                            <div data-role="navbar">
+                                <ul>
+                                    <li><a href="#" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
+                                    <li><a href="list.html" data-icon="grid">Idioms</a></li>
+                                    <li><a href="settings.html" data-icon="gear">Settings</a></li>
+                                </ul>
+                            </div>
+                        </div>-->
+
+        </div>
+
+        <script>
+            $(function(){
+                
+                $.mobile.loading( 'show', {
+                    text: 'preparing database ... ',
+                    textVisible: true,
+                    theme: 'z',
+                    html: ""
+                });
+                
+                iBase = new IdiomsDBTools();
+                iBase.init();
+                
+                
+                
+//                iBase.loadAllIdioms(function(){
+//                    window.location.href = 'test.html#listPage';
+//                });
+            });
+            
+        </script>
+
+
+    </body>
+</html>

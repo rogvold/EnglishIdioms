@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+        <link rel="stylesheet" href="assets/jquery.mobile-1.4.1.min.css">
+        <script src="assets/jquery.js"></script>
+        <script src="assets/flurry.js"></script>
+<!--        <script src="http://debug.phonegap.com/target/target-script-min.js#sabir"></script>-->
+
+        <script>
+//            $(document).bind("mobileinit", function () {
+//                $.mobile.ajaxEnabled = false;
+//            });
+            FlurryAgent.startSession("DS69Q7J9TH5X5TC9SDZR");
+        </script>
+
+
+        <script src="assets/jquery.mobile-1.4.1.min.js"></script>
+
+        <script src="js/parse.js"></script>
+        <script src="js/IdiomsDBTools.js"></script>
+
+        <style>
+            li a img{
+                padding-top: 10px;
+                padding-left: 10px;
+            }
+
+            [data-role=footer]{
+                bottom: 0px; 
+                position:absolute;  
+                width:100%
+            }
+
+            a.visitedIdiom {
+                background: lightyellow !important;
+                /*                border-color: #ddd;
+                                color: #333;
+                                text-shadow: 0 1px 0 #f3f3f3;*/
+            }
+
+        </style>
+
+
+    </head>
+    <body>
+
+        <div data-role="page" id="listPage">
+            <div data-role="header" data-position="fixed">
+                <h1 style="margin: 0 5%;" >Idioms & Phrases</h1>
+            </div>
+
+            <div data-role="content" style="margin-bottom: 50px;">
+                <ul data-role="listview" id="idiomsList" >
+                    <li><a href="index.html">
+                            <img src="http://b.vimeocdn.com/ts/464/658/464658582_200.jpg" />
+                            <h3>Broken Bells</h3>
+                            <p>Broken Bells</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div data-role="footer" data-position="fixed" style="bottom: 0px; position: fixed; width: 100%;" >
+                <div data-role="navbar">
+                    <ul>
+                        <!--                        <li><a href="index.html" data-icon="home" >Home</a></li>-->
+                        <li><a href="#" data-icon="grid"  class="ui-btn-active ui-state-persist"  >Idioms</a></li>
+                        <li><a href="settings.html" data-icon="gear" >Settings</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
+
+        <script>
+            $(document).on('pageinit', '#listPage', function(){
+                iBase = new IdiomsDBTools();
+                iBase.initIdiomsList();
+                iBase.generateListHtml();
+                
+            });
+        </script>
+
+
+    </body>
+</html>

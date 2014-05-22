@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="js/jquery.min.js"></script>
+        <script src="../js/parse.js"></script>
+        <script src="js/edit.js"></script>
+
+        <style>
+            table tr td textarea{
+                width: 220px;
+                height: 130px;
+            }
+            
+            table tr td.idiomTitle textarea{
+                width: 150px !important;
+            }
+            
+            table tr{
+                background-color: lightgreen;
+            }
+
+            table tr td button{
+                cursor: pointer;
+            }
+            
+            table tr.todo{
+                background-color: lightcoral !important;
+            }
+            
+            table tr.updated{
+                background-color: lightyellow !important;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div>Idioms Table</div>
+        <div>
+            Total Number: <span id="totalNumber"></span>
+        </div>
+        <div>
+
+            <table id="idiomsTable">
+
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            
+            $(function(){
+                editor = new IdiomsEditor();
+                editor.init();
+            });
+        
+        </script>
+    </body>
+
+
+</html>
